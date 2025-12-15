@@ -9,7 +9,7 @@ const AccountPage = () => {
     }
     return (
         <>
-            <div>
+            <div className="mt-6 w-full px-4 sm:px-0 bg-gray-900">
             <h4>Your Username: {user.username}</h4>
             <h4>Your Email: {user.email}</h4>
             <button>Edit Profile</button>

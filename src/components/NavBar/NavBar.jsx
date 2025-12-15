@@ -5,7 +5,7 @@ const NavBar = () => {
         <>
         <header>
             <div id='brand-logo'>
-                <Link to='/movies'>🎬</Link>
+               <Link to='/movies'>🎬</Link>
             </div>
         </header>
         <h1>MovieNight</h1>
