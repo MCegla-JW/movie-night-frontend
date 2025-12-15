@@ -4,6 +4,7 @@ const Discover = () => {
     return (
         <>
         <h1>Popular This Week</h1>
+        <button>Search</button>
         </>
     )
 }
