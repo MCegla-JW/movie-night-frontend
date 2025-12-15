@@ -1,9 +1,13 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router'
 import { signInService } from '../../services/auth'
 import './SignIn.css'
+import { getUserFromToken, setToken } from '../../../utils/token'
+import { UserContext } from '../../contexts/UserContext'
+import { Link } from 'react-router'
 
 const SignIn = () => {
+    const { setUser } = useContext(UserContext)
     const [formData, setFormData] = useState({
         username: '',
         password: ''
@@ -22,7 +26,10 @@ const handleSubmit = async (e) => {
     e.preventDefault()
     setIsLoading(true)
     try {
-        await signInService(formData)
+        const response = await signInService(formData)
+        const token = response.data.access
+        if (token) setToken(token)
+        setUser(getUserFromToken())
         navigate('/movies/')
     } catch (error) {
         const res = error.response
@@ -55,6 +62,9 @@ return (
             {errorData.password && <p className='error-message'>{errorData.password}</p>}
         </div>
         <button type='submit'>Sign In</button>
+        {errorData.message && <p className='error-message'>{errorData.message}</p>}
+
+        <p>Don't have an account yet? <Link to='/auth/sign-up/'>Create account here!</Link></p>
     </form>
     </>
 ) 

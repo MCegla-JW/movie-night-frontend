@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { signUpService } from '../../services/auth'
+import { Link } from "react-router";
 
 const SignUp = () => {
     const [formData, setFormData] = useState({
@@ -69,6 +70,9 @@ return (
             {errorData.confirm_password && <p className='error-message'>{errorData.confirm_password}</p>}
         </div>
         <button type='submit' className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">Submit</button>
+        {errorData.message && <p className='error-message'>{errorData.message}</p>}
+
+        <p>Already have an account? <Link to='/auth/sign-in/'>Sign In</Link></p>
     </form>
     </>
 )
