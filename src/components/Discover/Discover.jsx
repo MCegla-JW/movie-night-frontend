@@ -56,7 +56,9 @@ const Discover = () => {
         )}
         </div>
         </div>
-        <MovieModal movie={selectedMovie} onClose={() => setSelectedMovie(null)}/>
+        {selectedMovie && (
+        <MovieModal movie={selectedMovie} onClose={() => setSelectedMovie(null)}
+        />)}
         </>
     )
 }
