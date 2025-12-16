@@ -1,6 +1,6 @@
 import { createContext } from "react"
 import { useState } from "react"
-import { getUserFromToken, removeToken } from "../../utils/token"
+import { getUserFromToken, removeToken } from "../utils/token"
 
 const UserContext = createContext()
 

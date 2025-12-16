@@ -2,7 +2,7 @@ import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router'
 import { signInService } from '../../services/auth'
 import './SignIn.css'
-import { getUserFromToken, setToken } from '../../../utils/token'
+import { getUserFromToken, setToken } from '../../utils/token'
 import { UserContext } from '../../contexts/UserContext'
 import { Link } from 'react-router'
 
