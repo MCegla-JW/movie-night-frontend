@@ -75,7 +75,7 @@ return (
           { errorData?.text && <p className='error-message'>{errorData.date}</p>}
         </div>
         <p>Tip: After creating, you'll get a shareable link to invite friends. Only movies you liked will appear for voting!</p>
-        <button type="submit" className="flex w-full justify-center rounded-md bg-purple-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 mb-3 mt-3">Create Party</button>
+        <button type="submit" className="flex w-full justify-center rounded-md bg-purple-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 mb-3 mt-3">Update Party</button>
         <p className="mt-10 text-center text-sm/6 text-gray-400"><Link className="font-semibold text-indigo-400 hover:text-indigo-300" to='/parties/'>Close</Link></p>
         { errorData?.message && <p className='error-message'>{errorData.message}</p>}
       </form>
