@@ -7,7 +7,6 @@ import { WatchlistIndex, WatchlistDelete  } from "../../services/watchlist"
 import { MdOutlineLocalMovies } from "react-icons/md"
 import { Navigate } from "react-router"
 import MovieModal from "../MovieModal/MovieModal"
-import axios from "axios"
 
 const Watchlist = () => {
     const { user } = useContext(UserContext)

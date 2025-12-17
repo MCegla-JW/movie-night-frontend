@@ -1,13 +1,13 @@
 import { WatchlistCreate } from "../../services/watchlist"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const MovieModal = ({ movie, onClose, isOnWatchlist, addToWatchlist }) => {
-  if (!movie) return null;
-    const m = movie.movie || movie
-    
-    const backdropUrl = m.backdrop_path || m.backdrop
-    const overview = m.overview || m.overview || 'No overview available'
-    const rating = m.vote_average || m.rating 
+if (!movie) return null;
+
+const m = movie.movie || movie
+const backdropUrl = m.backdrop_path || m.backdrop
+const overview = m.overview || m.overview || 'No overview available'
+const rating = m.vote_average || m.rating 
 
   return (
     <>

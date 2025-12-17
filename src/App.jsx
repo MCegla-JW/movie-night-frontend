@@ -8,7 +8,8 @@ import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import AccountPage from './components/AccountPage/AccountPage'
 import Watchlist from './components/WatchlistIndex/WatchlistIndex'
-import PartiesIndex from './components/PartiesIndex/Parties'
+import PartiesIndex from './components/PartiesIndex/PartiesIndex'
+import NewPartyCreate from './components/NewPartyCreate/NewPartyCreate'
 
 const App = () => {
   return (
@@ -21,7 +22,8 @@ const App = () => {
         <Route path='/auth/sign-in/' element={<SignIn/>}/>
         <Route path='/auth/account/' element={<AccountPage/>}/>
         <Route path='/watchlist/' element={<Watchlist/>}/>
-        <Route path='/parties' element={<PartiesIndex/>}/>
+        <Route path='/parties/' element={<PartiesIndex/>}/>
+        <Route path='/parties/create' element={<NewPartyCreate/>}/>
 
         <Route path='/*' element={<NotFound/>}/>
       </Routes>
