@@ -3,7 +3,7 @@ import axios from 'axios'
 import { getToken } from '../utils/token'
 
 const api = axios.create({
-    baseURL: `${import.meta.env.VITE_API_URL}/parties`
+    baseURL: `${import.meta.env.VITE_API_URL}/parties/`
 })
 
 // * Party ------------------------------------
@@ -25,7 +25,7 @@ export const PartyCreate = async (formData) => {
 }
 
 export const partyShow = (partyId) => {
-  return api.get(`/${partyId}`, {
+  return api.get(`/${partyId}/`, {
     headers: {
       Authorization: `Bearer ${getToken()}`,
     },
@@ -33,7 +33,7 @@ export const partyShow = (partyId) => {
 }
 
 export const partyUpdate = (partyId, formData) => {
-  return api.put(`/${partyId}`, formData, {
+  return api.put(`/${partyId}/`, formData, {
     headers: {
       Authorization: `Bearer ${getToken()}`,
     },
@@ -41,7 +41,7 @@ export const partyUpdate = (partyId, formData) => {
 }
 
 export const partyDelete = (partyId) => {
-  return api.delete(`/${partyId}`, {
+  return api.delete(`/${partyId}/`, {
     headers: {
       Authorization: `Bearer ${getToken()}`,
     },

@@ -4,7 +4,8 @@ import PartyCard from "../PartyCard/PartyCard"
 import { useContext, useState, useEffect } from "react"
 import { UserContext } from "../../contexts/UserContext"
 import { PartyIndex } from "../../services/party"
-import { useNavigate } from "react-router"
+import { useNavigate, Navigate } from "react-router"
+
 
 const PartiesIndex = () => {
     const { user } = useContext(UserContext)
@@ -29,6 +30,9 @@ const PartiesIndex = () => {
         }
         getPartyIndex()
     },[])
+
+
+    if (!user) return <Navigate to="/auth/sign-in" />
 
     return (
         <>

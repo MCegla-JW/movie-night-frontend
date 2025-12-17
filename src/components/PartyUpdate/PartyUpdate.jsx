@@ -1,16 +1,20 @@
-import { useContext, useState } from 'react'
-import { useNavigate, Navigate } from 'react-router'
-import { UserContext } from '../../contexts/UserContext'
-import { PartyCreate } from '../../services/party'
-import { Link } from 'react-router'
+import { useNavigate, Navigate, useParams, Link } from "react-router"
+import { UserContext } from "../../contexts/UserContext"
+import { useContext, useState, useEffect } from "react"
+import LoadingIcon from "../LoadingIcon/LoadingIcon"
+import { partyShow, partyUpdate } from "../../services/party"
 
-const NewPartyCreate = () => {
-    const { user } = useContext(UserContext)
-    const [ formData, setFormData ] = useState({
+
+const UpdateParty = () => {
+    const {user} = useContext(UserContext)
+
+    const [formData, setFormData ] = useState({
         title: '',
         date: '',
     })
+    const [isLoading, setIsLoading] = useState(true)
     const [errorData, setErrorData] = useState({})
+    const { partyId } = useParams()
     const navigate = useNavigate()
 
     const handleChange = (e) => {
@@ -20,24 +24,44 @@ const NewPartyCreate = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-        const { data } = await PartyCreate(formData)
-        navigate(`/parties/${data.id}`)
-    } catch (error) {
-        console.log(error)
-        if (error.response?.status === 500) {
-            return setErrorData({ message: 'Something went wrong. Please try again.'})
+            await partyUpdate(partyId, formData)
+            navigate(`/parties/${partyId}`)
+        } catch (error) {
+            console.log(error)
+            if (error.response.status === 5000) {
+                return setErrorData({message: 'Something went wrong. Please try again.'})
+            }
+            setErrorData(error.response.data)
         }
-        setErrorData(error.response?.data)
     }
-}
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const { data } = await partyShow(partyId)
+                setFormData(data)
+            } catch (error) {
+                console.log(error)
+                const { status, data } = error.response
+                if (status === 500) {
+                    setErrorData({message: 'Something went wrong. Please try again.'})
+                } else if (status === 404) {
+                navigate('/page-not-found')
+                } else {
+                    setErrorData(data)
+                }
+                } finally {
+                setIsLoading(false)
+                }
+            }
+            getData()
+        }, [partyId, navigate])
 
-if (!user) return <Navigate to='/auth/sign-in/'/>
-
+    if (!user) return <Navigate to='/auth/sign-in/'/>
 return (
-        <>
+<>
     <div className="w-full px-4 sm:px-0 bg-gray-900">
     <div className="flex min-h-screen flex-col justify-center py-8 sm:py-12">
-    <h1 className="mb-2 text-center text-xl font-bold tracking-tight sm:text-2xl text-gray-400">Create Watch Party</h1>
+    <h1 className="mb-2 text-center text-xl font-bold tracking-tight sm:text-2xl text-gray-400">Update Your Watch Party</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-control">
           <label htmlFor="title" className="block text-sm/6 font-semibold text-purple-400">Party Title</label>
@@ -61,4 +85,4 @@ return (
 )
 }
 
-export default NewPartyCreate
+export default UpdateParty
