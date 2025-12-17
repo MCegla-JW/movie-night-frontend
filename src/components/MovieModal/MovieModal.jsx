@@ -3,22 +3,18 @@ import { useState } from "react";
 
 const MovieModal = ({ movie, onClose, isOnWatchlist, addToWatchlist }) => {
   if (!movie) return null;
-    // // Add movie to watchlist 
-    // const addMovieToWatchlist = async (movie) => { 
-    //     try { 
-    //         await WatchlistCreate() 
-    //         setWatchlist((prev) => [...prev, movie]); 
-    //     } catch (err) { 
-    //         console.error(err); 
-    //     } 
-    // }
+    const m = movie.movie || movie
+    
+    const backdropUrl = m.backdrop_path || m.backdrop
+    const overview = m.overview || m.overview || 'No overview available'
+    const rating = m.vote_average || m.rating 
 
   return (
     <>
       <div className="modal modal-open">
         <div className="modal-box w-full max-w-2xl sm:max-w-3xl bg-base-100 shadow-xl">
           <img
-            src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+            src={`https://image.tmdb.org/t/p/w500${backdropUrl}`}
             alt={movie.title}
             className="rounded-lg mb-4 w-full object-contain max-h-96"
           />
@@ -29,11 +25,11 @@ const MovieModal = ({ movie, onClose, isOnWatchlist, addToWatchlist }) => {
           </p>
           <p className="mb-4">
             <span className="font-semibold"></span>
-            {movie.overview}
+            {overview}
           </p>
           <p className="mb-4">
             <span className="font-semibold">Rating: </span>
-            {movie.vote_average}
+            {rating}
           </p>
           <div className="flex justify-end gap-3">
             <button onClick={() => addToWatchlist(movie)} className="btn btn-sm">{isOnWatchlist ? 'Remove from Watchlist' : 'Add to Watchlist'}

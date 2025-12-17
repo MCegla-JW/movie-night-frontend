@@ -15,21 +15,3 @@ The React Compiler is not enabled on this template because of its impact on dev 
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
-
-
-const toggleWatchlist = (movie) => {
-            const exists = watchlist.some((w) => w.id === movie.id)
-            if (exists) {
-                setWatchlist(watchlist.filter((f) => f.id !== movie.id))
-            } else {
-                const watchlistMovie = {
-                    id: movie.id, 
-                    poster_path: movie.poster_path || movie.backdrop_path,
-                    title: movie.title,
-                    release_date: movie.release_date, 
-                    overview: movie.overview,
-                    rating: movie.vote_average
-                }
-                setWatchlist([...watchlist, watchlistMovie])
-            }
-        }
