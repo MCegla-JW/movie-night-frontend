@@ -19,10 +19,15 @@ const PartyDetails = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
+    if (!partyId) return
         const getData = async () => {
             try {
                 const { data } = await partyShow(partyId)
+                console.log("partyId from params:", partyId)
                 setParty(data)
+                console.log("Party data:", data);
+                console.log("User ID:", user.id, "Creator ID:", data.creator_id);
+
                 if (data.movies) {
                   setMovies(data.movies.map(pm => pm.movie))
                 }
@@ -71,9 +76,13 @@ const PartyDetails = () => {
             ) 
             : <p>Nothing to display.</p>
       }
+      {party && party.creator?.id === user.id && (
+        <>
     <MyModal party={party}>Invite to Party</MyModal>
     <button type="submit" className="flex w-full justify-center rounded-md bg-purple-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 mb-3 mt-3"><Link to={`/parties/${partyId}/edit`}>Edit</Link></button>
     <button type="button" className="flex w-full justify-center rounded-md bg-purple-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 mb-3 mt-3" onClick={handleDeleteParty}>Delete</button>
+      </>
+      )}
       <p className="mt-10 text-center text-sm/6 text-gray-400"><Link className="font-semibold text-indigo-400 hover:text-indigo-300" to='/parties/'>Back</Link></p>
       </div>
       </div>

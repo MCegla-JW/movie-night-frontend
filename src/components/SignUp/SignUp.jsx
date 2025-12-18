@@ -47,32 +47,31 @@ return (
     <div className="flex min-h-screen flex-col justify-center py-8 sm:py-12">
     <h1 className="mb-2 text-center text-xl font-bold tracking-tight sm:text-2xl text-gray-400">Create an account</h1>
     <form onSubmit={handleSubmit}>
-    {errorData.message && <p className='error-message'>{errorData.message}</p>}
         <div className='form-control'>
             <label htmlFor='username' className="block text-sm/6 font-semibold text-purple-400">Username</label>
             <input className="block w-full border border-slate-600 rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" type='text' name='username' id='username' onChange={handleChange} required/>
-            {errorData.username && <p className='error-message'>{errorData.username}</p>}
+            {errorData.username && <p className='error-message text-red-400 font-bold'>{errorData.username}</p>}
         </div>
 
         <div className='form-control'>
             <label htmlFor='email' className="block text-sm/6 font-semibold text-purple-400">Email</label>
             <input className="block w-full border border-slate-600 rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" type='text' name='email' id='email' onChange={handleChange} required/>
-            {errorData.email && <p className='error-message'>{errorData.email}</p>}
+            {errorData.email && <p className='error-message text-red-400 font-bold'>{errorData.email}</p>}
         </div>
 
         <div className='form-control'>
             <label htmlFor='password' className="block text-sm/6 font-semibold text-purple-400">Password</label>
             <input className="block w-full border border-slate-600 rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" type='password' name='password' id='password' onChange={handleChange} required/>
-            {errorData.password && <p className='error-message'>{errorData.password}</p>}
+            {errorData.password && <p className='error-message text-red-400 font-bold'>{errorData.password}</p>}
         </div>
 
         <div className='form-control'>
             <label htmlFor='confirm_password' className="block text-sm/6 font-semibold text-purple-400">Confirm Password</label>
             <input className="block w-full border border-slate-600 rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" type='password' name='confirm_password' id='confirm_password' onChange={handleChange} required/>
-            {errorData.confirm_password && <p className='error-message'>{errorData.confirm_password}</p>}
+            {errorData.confirm_password && <p className='error-message text-red-400 font-bold'>{errorData.confirm_password}</p>}
         </div>
         <button type='submit' className="flex w-full justify-center rounded-md bg-purple-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 mb-3 mt-3">Submit</button>
-        {errorData.message && <p className='error-message'>{errorData.message}</p>}
+        {errorData.message && <p className='error-message text-red-400 font-bold'>{errorData.message}</p>}
 
         <p className="mt-10 text-center text-sm/6 text-gray-400">Already have an account? <Link className="font-semibold text-indigo-400 hover:text-indigo-300" to='/auth/sign-in/'>Sign In</Link></p>
     </form>

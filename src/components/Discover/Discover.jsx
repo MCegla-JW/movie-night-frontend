@@ -5,7 +5,7 @@ import MovieCard from "../MovieCard/MovieCard";
 import MovieModal from "../MovieModal/MovieModal";
 import LoadingIcon from "../LoadingIcon/LoadingIcon";
 import axios from "axios";
-import { WatchlistCreate } from "../../services/watchlist";
+import { WatchlistCreate, WatchlistIndex } from "../../services/watchlist";
 
 const Discover = () => {
   const { user } = useContext(UserContext);

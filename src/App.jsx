@@ -12,6 +12,7 @@ import PartiesIndex from './components/PartiesIndex/PartiesIndex'
 import NewPartyCreate from './components/NewPartyCreate/NewPartyCreate'
 import PartyDetails from './components/PartyDetails/PartyDetails'
 import UpdateParty from './components/PartyUpdate/PartyUpdate'
+import JoinParty from './components/JoinParty/JoinParty'
 
 const App = () => {
   return (
@@ -25,8 +26,9 @@ const App = () => {
         <Route path='/auth/account/' element={<AccountPage/>}/>
         <Route path='/watchlist/' element={<Watchlist/>}/>
         <Route path='/parties/' element={<PartiesIndex/>}/>
-        <Route path='/parties/create/' element={<NewPartyCreate/>}/>
-        <Route path='/parties/:partyId/' element={<PartyDetails/>}/>
+        <Route path='/parties/create' element={<NewPartyCreate/>}/>
+        <Route path='/parties/:partyId' element={<PartyDetails/>}/>
+        <Route path='/parties/join/:joinCode' element={<JoinParty/>}/>
         <Route path='/parties/:partyId/edit' element={<UpdateParty/>}/>
 
         <Route path='/*' element={<NotFound/>}/>

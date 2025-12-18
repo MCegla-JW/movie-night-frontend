@@ -32,7 +32,7 @@ const rating = m.vote_average || m.rating
             {rating}
           </p>
           <div className="flex justify-end gap-3">
-            <button onClick={() => addToWatchlist(movie)} className="btn btn-sm">{isOnWatchlist ? 'Remove from Watchlist' : 'Add to Watchlist'}
+            <button  onClick={() => addToWatchlist(movie)} className="btn btn-sm rounded-md bg-green-700 hover:bg-green-300">{isOnWatchlist ? 'Remove from Watchlist' : 'Add to Watchlist'}
             </button>
             <button className="btn" onClick={onClose}>
               Close

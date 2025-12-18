@@ -5,7 +5,7 @@ import { Link, Navigate } from 'react-router'
 const AccountPage = () => {
     const { user, signOut } = useContext(UserContext)
     if (!user) {
-        return <Navigate to='/auth/sign-up/' />
+        return <Navigate to='/auth/sign-in/' />
     }
     return (
         <>
