@@ -13,7 +13,7 @@ const Discover = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const [isOnWatchlist, setIsOnWatchlist] = useState([])
+  // const [isOnWatchlist, setIsOnWatchlist] = useState([])
   const [watchlist, setWatchlist] = useState([]);
 
   useEffect(() => {
