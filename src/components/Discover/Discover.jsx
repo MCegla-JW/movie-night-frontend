@@ -75,6 +75,11 @@ const Discover = () => {
                 className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
                 size={18}
               />
+              {searchVal && (
+                <button onClick={() => setSearchVal('')} className='absolute right-4 top-1/2 -translate-y-1/2 text-gray-400' aria-label='Clear search'>
+                  x
+                </button>
+              )}
               <input
                 type="text"
                 placeholder="Search movies"

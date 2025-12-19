@@ -27,14 +27,14 @@ const DeleteModal = ({partyId}) => {
 
       <Dialog className="relative z-50" open={isOpen} onClose={closeModal}>
         <div className='fixed inset-0 bg-black/50' aria-hidden='true'/>
-        <div className='fixed inset-0 flex items-center justify-center p-4'>
-        <DialogPanel className='w-full max-w-md rounded bg-white p-6 shadow-lg'>
-          <DialogTitle className="text-lg leading-6 text-purple-900 font-bold">Are you sure you want to delete the party?</DialogTitle>
+        <div className='fixed inset-0 flex items-center justify-center p-4 transi'>
+        <DialogPanel className='w-full max-w-md rounded-md bg-base-100 p-6 shadow-lg'>
+          <DialogTitle className="text-lg leading-6 text-white-900 font-bold">Are you sure you want to delete the party?</DialogTitle>
           <div className='mt-4 flex justify-center gap-3'>
-          <button onClick={handleDeleteParty} className="px-10 py-2 rounded bg-green-700">
+          <button onClick={handleDeleteParty} className="px-10 py-2 rounded bg-green-800">
             Yes 
           </button>
-        <button onClick={closeModal} className="px-10 py-2 rounded bg-red-900">
+        <button onClick={closeModal} className="px-10 py-2 rounded bg-red-800">
             No
           </button>
           </div>
