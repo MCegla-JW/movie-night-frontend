@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext} from 'react'
+import { useEffect, useState, useContext} from 'react'
 import LoadingIcon from '../LoadingIcon/LoadingIcon'
 import { UserContext } from '../../contexts/UserContext'
 import { partyShow, partyDelete } from '../../services/party'

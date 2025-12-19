@@ -47,9 +47,9 @@ if (!user) return <Navigate to='/auth/sign-in/'/>
 
 return (
         <>
-    <div className="w-full px-4 sm:px-0 bg-gray-900">
+    <div className="w-full px-4 sm:px-0 bg-gray-900 pt-20">
     <div className="flex min-h-screen flex-col justify-center py-8 sm:py-12">
-    <h1 className="mb-2 text-center text-xl font-bold tracking-tight sm:text-2xl text-gray-400">Create Watch Party</h1>
+    <h1 className="mb-2 text-center text-xl font-bold sm:text-2xl text-gray-400">Create Watch Party</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-control">
           <label htmlFor="title" className="block text-sm/6 font-semibold text-purple-400">Party Title</label>

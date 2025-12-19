@@ -61,7 +61,7 @@ const MyModal = ({party}) => {
                     Invite Friends to Your Party
                   </Dialog.Title>
                   <div className="mt-4">
-                <input type='text' value={joinLink} readOnly className='w-full border border-gra-300 rounded-md p-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500'/>
+                <input type='text' value={joinLink} readOnly className='w-full border border-gra-300 rounded-md p-2 text-gray-900 focus:outline-none focus:ring-2 focus'/>
                   <button type='button' onClick={copyToClipboard} className='mt-2 w-full rounded-md bg-purple-500 px-3 py-1.5 text-white hover:bg-purple-600'>
                     Copy Link
                   </button>

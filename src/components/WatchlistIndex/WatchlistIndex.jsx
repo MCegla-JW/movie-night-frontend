@@ -40,6 +40,7 @@ const Watchlist = () => {
         }
         getWatchlist()
     },[])
+    
 
 const removeFromWatchlist = async (movie) => {
     try {
@@ -59,7 +60,7 @@ const removeFromWatchlist = async (movie) => {
 
     return (
         <>
-        <div className="pb-24 min-h-screen bg-gray-900 px-4">
+        <div className="pb-24 min-h-screen bg-gray-900 px-4 pt-20">
         <div className="flex flex-col py-7 gap-4">
         <h1 className="text-center text-xl font-bold text-gray-400">My Movies</h1>
         {isLoading ? (

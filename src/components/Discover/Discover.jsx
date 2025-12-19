@@ -41,17 +41,31 @@ const Discover = () => {
   // Add movie to watchlist
     const addToWatchlist = async (movie) => {
         try {
-        await WatchlistCreate(movie);
+        const response = await WatchlistCreate(movie);
         setWatchlist(prev =>[...prev, movie])
         } catch (err) {
         console.error("Failed to load movies", err);
         }
     }
-    //const isOnWatchlist = (movieId) => watchlist.some((w) => w.id === movieId)
+    useEffect(() => {
+  const fetchWatchlist = async () => {
+    try {
+      const response = await WatchlistIndex(); // fetch current watchlist from backend
+      // Extract movie objects
+      const moviesInWatchlist = response.data.map(item => item.movie);
+      setWatchlist(moviesInWatchlist);
+    } catch (err) {
+      console.error("Failed to load watchlist", err);
+    }
+  };
+
+  fetchWatchlist();
+}, []);
+
 
     return (
       <>
-        <div className="pb-24 min-h-screen bg-gray-900 px-4">
+        <div className="pb-24 min-h-screen bg-gray-900 px-4 pt-20">
           <div className="flex flex-col py-7 gap-4">
             <h1 className="text-center text-xl font-bold text-gray-400">
               Popular This Week
@@ -89,7 +103,10 @@ const Discover = () => {
         {selectedMovie && (
           <MovieModal
             movie={selectedMovie}
-            onClose={() => setSelectedMovie(null)} addToWatchlist={addToWatchlist}
+            onClose={() => setSelectedMovie(null)} 
+            addToWatchlist={addToWatchlist}
+            isOnWatchlist={watchlist.some(m => (m.id || m.tmdb_id) === (selectedMovie.id || selectedMovie.tmdb_id))}
+
           />
         )}
       </>

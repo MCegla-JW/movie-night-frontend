@@ -4,9 +4,9 @@ import { MdLocalMovies } from "react-icons/md"
 const NavBar = () => {
     return (
         <>
-        <header className="bg-[#232b32] px-4 py-3">
+        <header className="bg-[#232b32] px-4 py-3 fixed w-full top-0 z-50">
                <Link to='/movies' className='flex items-center gap-2 text-white'><MdLocalMovies size={50}/>
-        <span className='text-x1 font-bold'>MovieNight</span>
+        <span className='text-xl font-bold'>MovieNight</span>
         </Link>
         </header>
         </>

@@ -10,10 +10,10 @@ const BottomNavBar = () => {
     return (
         <nav className="fixed bottom-0 left-0 w-full h-24 bg-[#232b32] border-t border-white/10">
             <div className="flex justify-around py-2">
-            <Link to='/movies' className='flex flex-col items-center text-white text-xs'><FaRegHeart size={40}/><span className='mt-1'>Discover</span></Link>
-            <Link to='/parties' className='flex flex-col items-center text-white text-xs'><LuPopcorn size={40}/><span className='mt-1'>Parties</span></Link>
-            <Link to='/watchlist' className='flex flex-col items-center text-white text-xs'><MdOutlineLocalMovies size={40}/><span className='mt-1'>My Movies</span></Link>
-            <Link to='/auth/account' className='flex flex-col items-center text-white text-xs'><VscAccount size={40}/><span className='mt-1'>Account</span></Link>
+            <Link to='/movies' className='flex flex-col items-center text-white text-xs'><FaRegHeart size={50}/><span className='mt-1'>Discover</span></Link>
+            <Link to='/parties' className='flex flex-col items-center text-white text-xs'><LuPopcorn size={50}/><span className='mt-1'>Parties</span></Link>
+            <Link to='/watchlist' className='flex flex-col items-center text-white text-xs'><MdOutlineLocalMovies size={50}/><span className='mt-1'>My Movies</span></Link>
+            <Link to='/auth/account' className='flex flex-col items-center text-white text-xs'><VscAccount size={50}/><span className='mt-1'>Account</span></Link>
             </div>
         </nav>
     )
