@@ -17,7 +17,7 @@ export const WatchlistIndex = () => {
 }
 
 export const WatchlistCreate = async (movie) => {
-    return await axios.post(`http://localhost:8000/watchlist/${movie.id}/`, {}, {
+    return await api.post(`/${movie.id}/`, {}, {
         headers: {
             Authorization: `Bearer ${getToken()}`,
         }
@@ -25,7 +25,7 @@ export const WatchlistCreate = async (movie) => {
 }
 
 export const WatchlistDelete = async (tmdbId) => {
-    return await axios.delete(`http://localhost:8000/watchlist/${tmdbId}/`, {
+    return await api.delete(`/${tmdbId}/`, {
         headers: {
             Authorization: `Bearer ${getToken()}`,
         }

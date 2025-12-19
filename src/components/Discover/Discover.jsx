@@ -21,8 +21,8 @@ const Discover = () => {
       try {
         setIsLoading(true);
         const url = searchVal
-          ? `http://localhost:8000/movies/?search=${searchVal}`
-          : "http://localhost:8000/movies/";
+          ? `${import.meta.env.VITE_API_URL}/movies/?search=${searchVal}`
+          : `${import.meta.env.VITE_API_URL}/movies/`;
         const response = await axios.get(url);
         setMovies(response.data.movies);
         console.log(response);
