@@ -7,6 +7,7 @@ import { Link } from 'react-router'
 import MovieCard from '../MovieCard/MovieCard'
 import MovieModal from '../MovieModal/MovieModal'
 import MyModal from '../PartyLinkModal/PartyLinkModal'
+import DeleteModal from '../DeleteModal/DeleteModal'
 
 const PartyDetails = () => {
     const { user } = useContext(UserContext)
@@ -47,10 +48,6 @@ const PartyDetails = () => {
         getData()
     }, [partyId, navigate])
 
-    const handleDeleteParty = async () => {
-    await partyDelete(partyId)
-    navigate('/parties/')
-  }
     return (
         <>
     <div className="w-full px-4 sm:px-0 bg-gray-900">
@@ -79,8 +76,8 @@ const PartyDetails = () => {
       {party && party.creator?.id === user.id && (
         <>
     <MyModal party={party}>Invite to Party</MyModal>
-    <button type="submit" className="flex w-full justify-center rounded-md bg-purple-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 mb-3 mt-3"><Link to={`/parties/${partyId}/edit`}>Edit</Link></button>
-    <button type="button" className="flex w-full justify-center rounded-md bg-purple-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 mb-3 mt-3" onClick={handleDeleteParty}>Delete</button>
+    <button type="submit" className="flex w-full justify-center rounded-md bg-purple-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 mb-3 mt-3"><Link to={`/parties/${partyId}/edit`}>Edit Party</Link></button>
+    <DeleteModal partyId={partyId}/>
       </>
       )}
       <p className="mt-10 text-center text-sm/6 text-gray-400"><Link className="font-semibold text-indigo-400 hover:text-indigo-300" to='/parties/'>Back</Link></p>

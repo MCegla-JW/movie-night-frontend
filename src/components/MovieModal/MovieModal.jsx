@@ -1,6 +1,3 @@
-import { WatchlistCreate } from "../../services/watchlist"
-import { useState, useEffect } from "react";
-
 const MovieModal = ({ movie, onClose, isOnWatchlist, addToWatchlist }) => {
 if (!movie) return null;
 
