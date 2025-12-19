@@ -17,9 +17,6 @@ import {
 import { BsFillPeopleFill } from "react-icons/bs";
 import { FaAngleDown } from "react-icons/fa";
 
-
-
-
 const PartyDetails = () => {
   const { user } = useContext(UserContext);
   const [party, setParty] = useState(null);
@@ -60,9 +57,25 @@ const PartyDetails = () => {
     getData();
   }, [partyId, navigate]);
 
+  {
+    movies.map((movie) => {
+      const isInParty = party.movies.some((m) => m.id === movie.id);
+      return (
+        <MovieCard
+          key={movie.id}
+          movie={movie}
+          onClick={() => {
+            setSelectedMovie(movie);
+            setSelectedMovieIsInParty(isInParty);
+          }}
+        />
+      );
+    });
+  }
+
   return (
     <>
-      <div className="w-full px-4 sm:px-0 bg-gray-900">
+      <div className="pb-24 min-h-screen bg-gray-900 px-4 pt-20">
         <div className="flex min-h-screen flex-col justify-center py-8 sm:py-12">
           {errorData.message ? (
             <p className="error-message">{errorData.message}</p>
@@ -75,21 +88,30 @@ const PartyDetails = () => {
                   {party.title}
                 </h1>
                 <h2 className="mb-2 text-center text-xl font-bold tracking-normal sm:text-2xl text-gray-400">
-                  {party.date}
+                  {new Date(party.date).toLocaleDateString() || "N/A"}
                 </h2>
                 <h2 className="mb-2 text-center text-l font-bold tracking-wider sm:text-2xl text-gray-400">
                   Hosted By: {party.creator.username}
                 </h2>
                 <Listbox value={null} onChange={() => {}}>
-                  <div className='w-full max-w-xs mx-auto mt-4 relative'>
-                  <ListboxButton className="w-full rounded-md bg-purple-400 text-white mb-2 text-center text-l font-bold tracking-wider sm:text-2xl flex items center justify-center space-x-2 p-2"><BsFillPeopleFill className='text-xl'/><span>Party Members</span><FaAngleDown className='text-xl'/></ListboxButton>
-                  <ListboxOptions className="data-focus:bg-blue-100">
-                    {party.members.map((member) => (
-                      <ListboxOption className="mb-2 text-center text-l font-bold tracking-wider sm:text-2xl text-gray-400" key={member.id} value={member} disabled>
-                        {member.username}
-                      </ListboxOption>
-                    ))}
-                  </ListboxOptions>
+                  <div className="w-full max-w-xs mx-auto mt-4 relative">
+                    <ListboxButton className="w-full rounded-md bg-purple-400 text-white mb-2 text-center text-l font-bold tracking-wider sm:text-2xl flex items center justify-center space-x-2 p-2">
+                      <BsFillPeopleFill className="text-xl" />
+                      <span>Party Members</span>
+                      <FaAngleDown className="text-xl" />
+                    </ListboxButton>
+                    <ListboxOptions className="data-focus:bg-blue-100">
+                      {party.members.map((member) => (
+                        <ListboxOption
+                          className="mb-2 text-center text-l font-bold tracking-wider sm:text-2xl text-gray-400"
+                          key={member.id}
+                          value={member}
+                          disabled
+                        >
+                          {member.username}
+                        </ListboxOption>
+                      ))}
+                    </ListboxOptions>
                   </div>
                 </Listbox>
                 <h1 className="mb-2 text-center text-3xl font-bold tracking-normal sm:text-2xl text-gray-400">
@@ -136,6 +158,7 @@ const PartyDetails = () => {
           movie={selectedMovie}
           onClose={() => setSelectedMovie(null)}
           isOnWatchlist={true}
+          isInParty={party.movies.some((m) => m.id === selectedMovie.id)}
         />
       )}
     </>

@@ -1,11 +1,18 @@
-const MovieModal = ({ movie, onClose, isOnWatchlist, addToWatchlist }) => {
+import { useNavigate } from "react-router";
+import { UserContext } from "../../contexts/UserContext";
+import { useContext } from "react";
+
+const MovieModal = ({ movie, onClose, isOnWatchlist, addToWatchlist}) => {
 if (!movie) return null;
 
 const m = movie.movie || movie
 const backdropUrl = m.backdrop_path || m.backdrop
-const overview = m.overview || m.overview || 'No overview available'
+const overview = m.overview || 'No overview available'
 const rating = m.vote_average || m.rating 
-const releaseDate = m.release_date 
+const releaseDate = m.release_date
+
+const navigate = useNavigate()
+const {user} = useContext(UserContext)
 
   return (
     <>
@@ -19,7 +26,7 @@ const releaseDate = m.release_date
           <h3 className="font-bold text-xl sm:text-2xl mb-4">{m.title}</h3>
           <p className="mb-2">
             <span className="font-semibold"></span>
-            {releaseDate || "N/A"}
+            {releaseDate}
           </p>
           <p className="mb-4">
             <span className="font-semibold"></span>
@@ -30,8 +37,12 @@ const releaseDate = m.release_date
             {rating}
           </p>
           <div className="flex justify-end gap-3">
+            {user ? (
             <button  onClick={() => addToWatchlist(m)} className="btn btn-sm rounded-md bg-green-700 hover:bg-green-300">{isOnWatchlist ? 'Remove from Watchlist' : 'Add to Watchlist'}
             </button>
+            ) : (
+              <button onClick={() => navigate('/auth/sign-in')} className="btn btn-sm rounded-md bg-gray-700 hover:bg-black-300">Sign In To Add To Watchlist</button>
+            )}
             <button className="btn" onClick={onClose}>
               Close
             </button>
