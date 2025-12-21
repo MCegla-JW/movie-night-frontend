@@ -1,32 +1,33 @@
-import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment, useState } from "react";
 
-const MyModal = ({party}) => {
-  const [isOpen, setIsOpen] = useState(false)
+const MyModal = ({ party }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-  const closeModal = () => 
-    setIsOpen(false)
+  const closeModal = () => setIsOpen(false);
 
-    const openModal = () =>
-    setIsOpen(true)
+  const openModal = () => setIsOpen(true);
 
-    const joinLink = `${window.location.origin}/parties/join/${party?.join_code || ''}`
+  const joinLink = `${window.location.origin}/parties/join/${
+    party?.join_code || ""
+  }`;
 
-    const copyToClipboard = () => {
-        navigator.clipboard.writeText(joinLink)
-        .then(() => alert('Link copied to clipboard'))
-        .catch(err => console.error('Failed to copy:', err))
-    }
+  const copyToClipboard = () => {
+    navigator.clipboard
+      .writeText(joinLink)
+      .then(() => alert("Link copied to clipboard"))
+      .catch((err) => console.error("Failed to copy:", err));
+  };
 
   return (
     <>
-        <button
-          type="button"
-          onClick={openModal}
-          className="flex w-full justify-center tracking-wide rounded-md bg-blue-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 mb-3 mt-3"
-        >
-          Invite Friends
-        </button>
+      <button
+        type="button"
+        onClick={openModal}
+        className="flex w-full justify-center tracking-wide rounded-md bg-blue-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 mb-3 mt-3"
+      >
+        Invite Friends
+      </button>
 
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -61,10 +62,19 @@ const MyModal = ({party}) => {
                     Invite Friends to Your Party
                   </Dialog.Title>
                   <div className="mt-4">
-                <input type='text' value={joinLink} readOnly className='w-full border border-gra-300 rounded-md p-2 text-gray-900 focus:outline-none focus:ring-2 focus'/>
-                  <button type='button' onClick={copyToClipboard} className='mt-2 w-full rounded-md bg-purple-500 px-3 py-1.5 text-white hover:bg-purple-600'>
-                    Copy Link
-                  </button>
+                    <input
+                      type="text"
+                      value={joinLink}
+                      readOnly
+                      className="w-full border border-gra-300 rounded-md p-2 text-gray-900 focus:outline-none focus:ring-2 focus"
+                    />
+                    <button
+                      type="button"
+                      onClick={copyToClipboard}
+                      className="mt-2 w-full rounded-md bg-purple-500 px-3 py-1.5 text-white hover:bg-purple-600"
+                    >
+                      Copy Link
+                    </button>
                   </div>
 
                   <div className="mt-4">
@@ -83,7 +93,7 @@ const MyModal = ({party}) => {
         </Dialog>
       </Transition>
     </>
-  )
-}
+  );
+};
 
-export default MyModal
+export default MyModal;
