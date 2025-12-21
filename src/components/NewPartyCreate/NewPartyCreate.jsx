@@ -28,10 +28,6 @@ const NewPartyCreate = () => {
       setErrorData(dateErrors);
       return;
     }
-    const dateFormConversion = {
-      ...formData,
-      date: new Date(formData.date).toISOString(),
-    };
     try {
       const { data } = await PartyCreate(formData);
       navigate(`/parties/${data.id}`);
