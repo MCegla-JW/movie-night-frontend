@@ -226,9 +226,6 @@ Users can create, view, update, and delete parties directly from the frontend.
 |---------------------|-------------------|-------------------|-------------------|-------------------|
 | <img src='./src/assets/screenshots/party-create.png' alt="Party Create" width="250"> | <img src='./src/assets/screenshots/party-card-members.png' alt="Show Party Card" width="250"> | <img src='./src/assets/screenshots/party-edit.png' alt="Party Edit" width="250"> | <img src='./src/assets/screenshots/party-delete.png' alt="Delete Party" width="250"> | <img src='./src/assets/screenshots/party-list.png' alt="Party List" width="250">
 
-## Screenshots
-TBC
-
 ## Challenges 
 
 - Watchlist Challenge: Initially, movies in the Watchlist did not display correctly. Although the same MovieModal was used for both Discover and Watchlist pages, data from Neon (PostgreSQL) wasn’t rendering properly. I had to update the MovieModal and MovieCard components to conditionally fetch and render movie data depending on whether it came from TMDB API or the database.
