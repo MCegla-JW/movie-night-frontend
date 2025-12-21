@@ -94,16 +94,16 @@ Code snippets in this ReadMe are from frontend, for backend, please go here - [B
 
 The project requirements included:
 
-- The back-end is built with Django and Python.
-- The front-end is built with React.
-- PostgreSQL (Neon) is used as the database management system.
-- Both the back-end and front-end implement JWT token-based authentication for user sign-up, sign-in, and sign-out.
+- The back-end is built with Django and Python
+- The front-end is built with React
+- PostgreSQL (Neon) is used as the database management system
+- Both the back-end and front-end implement JWT token-based authentication for user sign-up, sign-in, and sign-out
 - Authorization is enforced across the application: guest users (not signed in) cannot create, update, or delete data, or access functionality for those actions. They can only view the
-- Discover page and cannot add movies to their watchlist until signed in.
-- The project includes at least two data entities in addition to the User model, with multiple relationships between them.
-- There is full CRUD functionality on at least one model, implemented on both the front-end and back-end.
-- The front-end does not store any secret keys. Any public APIs requiring secret keys are accessed via the back-end.
-- The project is deployed online and accessible to users worldwide.
+- Discover page and cannot add movies to their watchlist until signed in
+- The project includes at least two data entities in addition to the User model, with multiple relationships between them
+- There is full CRUD functionality on at least one model, implemented on both the front-end and back-end
+- The front-end does not store any secret keys. Any public APIs requiring secret keys are accessed via the back-end
+- The project is deployed online and accessible to users worldwide
 
 # Planning
 
@@ -111,19 +111,19 @@ Theme: I am a big movie fan and I wanted to make something that I could use myse
 
 Entity Relationship Diagram (ERD): Created an ERD to visualize the relationships between Users, Watchlist, Parties and Movies
 
-Wireframes: Developed wireframes in Miro to establish the basic layout and user flow through the application.
+Wireframes: Developed wireframes in Miro to establish the basic layout and user flow through the application
 
-Project Document: Created a comprehensive document detailing the user journey alongside the wireframes to help visualize the flow and functionalities.
+Project Document: Created a comprehensive document detailing the user journey alongside the wireframes to help visualize the flow and functionalities
 
-Project Management: Used Trello to organize tasks, track progress, and manage the project timeline effectively.
+Project Management: Used Trello to organize tasks, track progress, and manage the project timeline effectively
 
 # Build/Code Process
 
 ## Watchlist Rendering Challenge 
 
-On the Discover page, movie data comes directly from the TMDB API, but the Watchlist pulls movies from Neon (PostgreSQL). Initially, movies in the Watchlist were not displaying correctly — images appeared as empty strips, and clicking them did not show details.
+On the Discover page, movie data comes directly from the TMDB API, but the Watchlist pulls movies from Neon (PostgreSQL). Initially, movies in the Watchlist were not displaying correctly — images appeared as empty strips, and clicking them did not show details
 
-After debugging, I realized the issue was with the database models. I updated the MovieModal and MovieCard components to conditionally fetch and render movie data depending on whether it came from TMDB or the database, ensuring consistent display across the app.
+After debugging, I realized the issue was with the database models. I updated the MovieModal and MovieCard components to conditionally fetch and render movie data depending on whether it came from TMDB or the database, ensuring consistent display across the app
 
 ```js
 const MovieModal = ({ movie, onClose, isOnWatchlist, addToWatchlist }) => {
@@ -150,7 +150,7 @@ const MovieModal = ({ movie, onClose, isOnWatchlist, addToWatchlist }) => {
 
 ## Invite Friends Modal
 
-I used Headless UI to create a modal where users can store and retrieve their party join code. The modal includes a “Copy to Clipboard” button for easy sharing, making it simple to invite friends to watch parties.
+I used Headless UI to create a modal where users can store and retrieve their party join code. The modal includes a “Copy to Clipboard” button for easy sharing, making it simple to invite friends to watch parties
 
 ```js
 const MyModal = ({ party }) => {
@@ -178,23 +178,23 @@ const MyModal = ({ party }) => {
 
 ## Reusable Components 
 
-I created reusable components such as MovieCard, MovieModal, NavBar, BottomNavBar, PartyCard, PartyDetails keep the UI modular and maintainable. Components are structured for clarity and separation of concerns.
+I created reusable components such as MovieCard, MovieModal, NavBar, BottomNavBar, PartyCard, PartyDetails keep the UI modular and maintainable. Components are structured for clarity and separation of concerns
 
 | Reusable Movie Components Demo | 
 |---------------------|
 | <img src='./src/assets/screenshots/reusable-movie-components-demo.gif' alt='Reusable Movie Components Demo' width='250'>| 
 
-*Demonstration of reusable MovieCard and MovieModal components across multiple pages (Discover, Watchlist, Party) and consistent rendering of Navbar and BottomNavBar on each page.*
+*Demonstration of reusable MovieCard and MovieModal components across multiple pages (Discover, Watchlist, Party) and consistent rendering of Navbar and BottomNavBar on each page*
 
 ## Planning & Wireframes: 
 
-I designed the user interface and flow using wireframes in Miro, ensuring a clear, intuitive layout before coding.
+I designed the user interface and flow using wireframes in Miro, ensuring a clear, intuitive layout before coding
 
 📓[Miro Board](https://miro.com/welcomeonboard/SWhsK2M4SDhKRlZxcWxkNXMwN2FhUVBMdm9HVGVNaTNGZnYrNUs3d2poQkgyZm1vNnVieXM4cVFlaFV3WGx6eFpndVA3MWZMZ2paTm42bk5WcG9pRFBJVkNPUTRUcFhaUkx6dUdXeWFRTTR5allMUUZqbmJjM29kd01UZy8vRUNQdGo1ZEV3bUdPQWRZUHQzSGl6V2NBPT0hdjE=?share_link_id=346039286400)
 
 ## Routing & Navigation: 
 
-I implemented React Router for client-side routing, including protected routes for authenticated users and conditional rendering for guest users. Signed Out users can only see the Discover page, can search but cant't add movies to watchlist. 
+I implemented React Router for client-side routing, including protected routes for authenticated users and conditional rendering for guest users. Signed Out users can only see the Discover page, can search but cant't add movies to watchlist
 
 ```js
 
@@ -214,7 +214,7 @@ I implemented React Router for client-side routing, including protected routes f
 
 ## Party CRUD Functionality
 
-Users can create, view, update, and delete parties directly from the frontend.
+Users can create, view, update, and delete parties directly from the frontend
 
 - Create Party: Users enter a party name and date; a unique join code is generated
 - Read/Display Party: Parties are displayed in a card format, showing party name, date, and members
@@ -228,8 +228,8 @@ Users can create, view, update, and delete parties directly from the frontend.
 
 ## Challenges 
 
-- Watchlist Challenge: Initially, movies in the Watchlist did not display correctly. Although the same MovieModal was used for both Discover and Watchlist pages, data from Neon (PostgreSQL) wasn’t rendering properly. I had to update the MovieModal and MovieCard components to conditionally fetch and render movie data depending on whether it came from TMDB API or the database.
-- Handling Multiple Data Sources: Learned to reference movie data differently depending on whether it was coming from the database or TMDB, ensuring consistent display across the app.
+- Watchlist Challenge: Initially, movies in the Watchlist did not display correctly. Although the same MovieModal was used for both Discover and Watchlist pages, data from Neon (PostgreSQL) wasn’t rendering properly. I had to update the MovieModal and MovieCard components to conditionally fetch and render movie data depending on whether it came from TMDB API or the database
+- Handling Multiple Data Sources: Learned to reference movie data differently depending on whether it was coming from the database or TMDB, ensuring consistent display across the app
 
 ## Wins
 
@@ -243,9 +243,9 @@ Users can create, view, update, and delete parties directly from the frontend.
 ## Key Learnings/Takeaways
 
 - React: I solidified my knowledge of React and component-based development
-- TMDB API and PostgreSQL: I gained experience fetching and conditionally rendering data from external APIs (TMDB) and working with a non-relational database (Neon/PostgreSQL).
+- TMDB API and PostgreSQL: I gained experience fetching and conditionally rendering data from external APIs (TMDB) and working with a non-relational database (Neon/PostgreSQL)
 - Tailwind CSS: I used a new styling library - Tailwind CSS, it made it easy to keep the styling consistent across the app 
-- Modals: I deepened my understanding of modals and implemented them using DaisyUI and Headless UI.
+- Modals: I deepened my understanding of modals and implemented them using DaisyUI and Headless UI
 - Planning and Prototyping: I realized that thorough wireframing and prototyping during the planning stage makes frontend development faster and more efficient
 - React Hooks: I learned how to manage component state effectively using React hooks (useState, useEffect, useContext) and localStorage
 - Debugging and Triubleshooting: I learned to troubleshoot data rendering issues when working with multiple data sources
