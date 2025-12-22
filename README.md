@@ -192,13 +192,13 @@ I designed the user interface and flow using wireframes in Miro, ensuring a clea
 
 📓[Miro Board](https://miro.com/welcomeonboard/SWhsK2M4SDhKRlZxcWxkNXMwN2FhUVBMdm9HVGVNaTNGZnYrNUs3d2poQkgyZm1vNnVieXM4cVFlaFV3WGx6eFpndVA3MWZMZ2paTm42bk5WcG9pRFBJVkNPUTRUcFhaUkx6dUdXeWFRTTR5allMUUZqbmJjM29kd01UZy8vRUNQdGo1ZEV3bUdPQWRZUHQzSGl6V2NBPT0hdjE=?share_link_id=346039286400)
 
-I also created a planning document contatining the user flow, wireframes, data models, routing tables and links to supporting materials.
+I also created a planning document containing the user flow, wireframes, data models, routing tables and links to supporting materials.
   
 📑[Planning Word Doc](https://docs.google.com/document/d/1JNhUyX-8qCxzBIFX848Q8rcOJbRCzBLj7rZ0Pe1xPSM/edit?tab=t.0)
 
 ## Routing & Navigation: 
 
-I implemented React Router for client-side routing, including protected routes for authenticated users and conditional rendering for guest users. Signed Out users can only see the Discover page, can search but cant't add movies to watchlist
+I implemented React Router for client-side routing, including protected routes for authenticated users and conditional rendering for guest users. Signed Out users can only see the Discover page, can search but can't add movies to watchlist
 
 ```js
 
@@ -240,7 +240,7 @@ Users can create, view, update, and delete parties directly from the frontend
 - TMDB Integration: I’m very pleased I successfully integrated TMDB into this project, including the search feature, to fetch and display movie data dynamically 
 - Making an app that I will use in my personal life 
 - Solidified my knowledge of React and mobile-first design; this project inspired me to explore React Native for future projects
-- Using a new library for styling: I learned to use Tailwind CSS, DaisyUI, and Material UI. As I learned MaterialUI for my third project, the learning curve for Tailwind CSS was not as steep and took less time than I anticipated
+- Using a new library for styling: I learned to use Tailwind CSS, DaisyUI, and Material UI. As I learned Material UI for my third project, the learning curve for Tailwind CSS was not as steep and took less time than I anticipated
 - Error Handling & Validation: I implemented client-side checks and graceful handling of missing or inconsistent data
 - Interactive Features & UX: I added modals, watchlist management, party creation and management and copy-to-clipboard functionality for a smooth user experience
 
@@ -252,7 +252,7 @@ Users can create, view, update, and delete parties directly from the frontend
 - Modals: I deepened my understanding of modals and implemented them using DaisyUI and Headless UI
 - Planning and Prototyping: I realized that thorough wireframing and prototyping during the planning stage makes frontend development faster and more efficient
 - React Hooks: I learned how to manage component state effectively using React hooks (useState, useEffect, useContext) and localStorage
-- Debugging and Triubleshooting: I learned to troubleshoot data rendering issues when working with multiple data sources
+- Debugging and Troubleshooting: I learned to troubleshoot data rendering issues when working with multiple data sources
 
 ## Known Bugs
 
@@ -267,7 +267,7 @@ Users can create, view, update, and delete parties directly from the frontend
 - Users can leave party
 - Party creator is notified that a new user joined the party
 - Users can manually add a movie to party 
-- Users can remove the random movie if they dont like it and another random movie is added 
+- Users can remove the random movie if they don't like it and another random movie is added 
 - Connect to third party API to source weather data in each trip destination and display it for users 
 - Users can rate movies
 
