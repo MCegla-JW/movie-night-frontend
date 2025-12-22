@@ -98,7 +98,7 @@ The project requirements included:
 - The front-end is built with React
 - PostgreSQL (Neon) is used as the database management system
 - Both the back-end and front-end implement JWT token-based authentication for user sign-up, sign-in, and sign-out
-- Authorization is enforced across the application: guest users (not signed in) cannot create, update, or delete data, or access functionality for those actions. They can only view the
+- Authorization is enforced across the application: guest users (not signed in) cannot create, update, or delete data, or access functionality for those actions
 - Discover page and cannot add movies to their watchlist until signed in
 - The project includes at least two data entities in addition to the User model, with multiple relationships between them
 - There is full CRUD functionality on at least one model, implemented on both the front-end and back-end
