@@ -247,7 +247,7 @@ Users can create, view, update, and delete parties directly from the frontend
 ## Key Learnings/Takeaways
 
 - React: I solidified my knowledge of React and component-based development
-- TMDB API and PostgreSQL: I gained experience fetching and conditionally rendering data from external APIs (TMDB) and working with a non-relational database (Neon/PostgreSQL)
+- TMDB API and PostgreSQL: I gained experience fetching and conditionally rendering data from external APIs (TMDB) and working with a relational database (Neon/PostgreSQL)
 - Tailwind CSS: I used a new styling library - Tailwind CSS, it made it easy to keep the styling consistent across the app 
 - Modals: I deepened my understanding of modals and implemented them using DaisyUI and Headless UI
 - Planning and Prototyping: I realized that thorough wireframing and prototyping during the planning stage makes frontend development faster and more efficient
