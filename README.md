@@ -192,6 +192,10 @@ I designed the user interface and flow using wireframes in Miro, ensuring a clea
 
 📓[Miro Board](https://miro.com/welcomeonboard/SWhsK2M4SDhKRlZxcWxkNXMwN2FhUVBMdm9HVGVNaTNGZnYrNUs3d2poQkgyZm1vNnVieXM4cVFlaFV3WGx6eFpndVA3MWZMZ2paTm42bk5WcG9pRFBJVkNPUTRUcFhaUkx6dUdXeWFRTTR5allMUUZqbmJjM29kd01UZy8vRUNQdGo1ZEV3bUdPQWRZUHQzSGl6V2NBPT0hdjE=?share_link_id=346039286400)
 
+I also created a planning document contatining the user flow, wireframes, data models, routing tables and links to supporting materials.
+  
+📑[Planning Word Doc](https://docs.google.com/document/d/1JNhUyX-8qCxzBIFX848Q8rcOJbRCzBLj7rZ0Pe1xPSM/edit?tab=t.0)
+
 ## Routing & Navigation: 
 
 I implemented React Router for client-side routing, including protected routes for authenticated users and conditional rendering for guest users. Signed Out users can only see the Discover page, can search but cant't add movies to watchlist
