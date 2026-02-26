@@ -8,6 +8,7 @@ import MovieCard from "../MovieCard/MovieCard";
 import MovieModal from "../MovieModal/MovieModal";
 import MyModal from "../PartyLinkModal/PartyLinkModal";
 import DeleteModal from "../DeleteModal/DeleteModal";
+import MoviePartyVoting from "../MoviePartyVoting/MoviePartyVoting";
 import {
   Listbox,
   ListboxButton,
@@ -27,6 +28,7 @@ const PartyDetails = () => {
   const { partyId } = useParams();
   const navigate = useNavigate();
   const [selectedPerson, setSelectedPerson] = useState(null);
+  const [showVoting, setShowVoting] = useState(false); // Toggle between movie list and voting
 
   useEffect(() => {
     if (!partyId) return;
@@ -44,7 +46,7 @@ const PartyDetails = () => {
       } catch (error) {
         console.log(error);
         if (error.response.status === 500) {
-          setErrorData({ message: "Something went wrong. Pelase try again" });
+          setErrorData({ message: "Something went wrong. Please try again" });
         } else if (error.response.status === 404) {
           navigate("/page-not-found");
         } else {
@@ -56,22 +58,6 @@ const PartyDetails = () => {
     };
     getData();
   }, [partyId, navigate]);
-
-  {
-    movies.map((movie) => {
-      const isInParty = party.movies.some((m) => m.id === movie.id);
-      return (
-        <MovieCard
-          key={movie.id}
-          movie={movie}
-          onClick={() => {
-            setSelectedMovie(movie);
-            setSelectedMovieIsInParty(isInParty);
-          }}
-        />
-      );
-    });
-  }
 
   return (
     <>
@@ -93,9 +79,11 @@ const PartyDetails = () => {
                 <h2 className="mb-2 text-center text-l font-bold tracking-wider sm:text-2xl text-gray-400">
                   Hosted By: {party.creator.username}
                 </h2>
+                
+                {/* Party Members Dropdown */}
                 <Listbox value={null} onChange={() => {}}>
                   <div className="w-full max-w-xs mx-auto mt-4 relative">
-                    <ListboxButton className="w-full rounded-md bg-purple-400 text-white mb-2 text-center text-l font-bold tracking-wider sm:text-2xl flex items center justify-center space-x-2 p-2">
+                    <ListboxButton className="w-full rounded-md bg-purple-400 text-white mb-2 text-center text-l font-bold tracking-wider sm:text-2xl flex items-center justify-center space-x-2 p-2">
                       <BsFillPeopleFill className="text-xl" />
                       <span>Party Members</span>
                       <FaAngleDown className="text-xl" />
@@ -114,23 +102,57 @@ const PartyDetails = () => {
                     </ListboxOptions>
                   </div>
                 </Listbox>
-                <h1 className="mb-2 text-center text-3xl font-bold tracking-normal sm:text-2xl text-gray-400">
-                  Movie List
-                </h1>
-                <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-4 pt-3 bg-gray-900">
-                  {movies.map((movie) => (
-                    <MovieCard
-                      key={movie.id}
-                      movie={movie}
-                      onClick={setSelectedMovie}
-                    />
-                  ))}
+
+                {/* Toggle between Movie List and Voting */}
+                <div className="flex justify-center gap-4 my-6">
+                  <button
+                    onClick={() => setShowVoting(false)}
+                    className={`px-6 py-2 rounded-md font-semibold transition-colors duration-200 ${
+                      !showVoting
+                        ? "bg-indigo-600 text-white"
+                        : "border border-slate-600 bg-white/5 text-gray-400 hover:bg-white/10"
+                    }`}
+                  >
+                    Movie List
+                  </button>
+                  <button
+                    onClick={() => setShowVoting(true)}
+                    className={`px-6 py-2 rounded-md font-semibold transition-colors duration-200 ${
+                      showVoting
+                        ? "bg-indigo-600 text-white"
+                        : "border border-slate-600 bg-white/5 text-gray-400 hover:bg-white/10"
+                    }`}
+                  >
+                    🗳️ Vote
+                  </button>
                 </div>
+
+                {/* Conditional Rendering: Movie List or Voting */}
+                {showVoting ? (
+                  <MoviePartyVoting partyId={partyId} />
+                ) : (
+                  <>
+                    <h1 className="mb-2 text-center text-3xl font-bold tracking-normal sm:text-2xl text-gray-400">
+                      Movie List
+                    </h1>
+                    <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-4 pt-3 bg-gray-900">
+                      {movies.map((movie) => (
+                        <MovieCard
+                          key={movie.id}
+                          movie={movie}
+                          onClick={setSelectedMovie}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
               </section>
             </>
           ) : (
             <p>Nothing to display.</p>
           )}
+          
+          {/* Creator Actions */}
           {party && party.creator?.id === user.id && (
             <>
               <MyModal party={party}>Invite to Party</MyModal>
@@ -143,6 +165,7 @@ const PartyDetails = () => {
               <DeleteModal partyId={partyId} />
             </>
           )}
+          
           <p className="mt-10 text-center text-sm/6 tracking-wide text-gray-400">
             <Link
               className="font-semibold text-indigo-400 hover:text-indigo-300"
@@ -153,6 +176,8 @@ const PartyDetails = () => {
           </p>
         </div>
       </div>
+      
+      {/* Movie Modal */}
       {selectedMovie && (
         <MovieModal
           movie={selectedMovie}
